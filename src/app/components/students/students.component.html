@@ -1,0 +1,18 @@
+<h1>Student List</h1>
+
+<ul class="student-list">
+  <li
+    *ngFor="let student of studentList"
+    [id] = " 'student-' + student.id "
+    (click) = "getDetails(student.id)"
+  >
+    {{student.first_name}}
+  </li>
+</ul>
+
+<!-- Detalle del estudiante seleccionado -->
+<div id="detalle">
+  {{studentSelected.first_name}}
+  {{studentSelected.last_name}}.
+  Pagado: {{totalPagado}}€
+</div>
