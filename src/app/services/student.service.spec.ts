@@ -115,6 +115,22 @@ describe('StudentService', () => {
 
   });
 
+  it('saveUserAssociation() should POST and return data', () => {
+
+     
+    let body = {
+      "name": "morpheus",
+      "job": "leader"
+  }
+    service.saveUserAssociation(body).subscribe((res) => {
+      expect(res).toEqual(body);
+    });
+
+    const req = httpMock.expectOne('https://reqres.in/api/users');
+    expect(req.request.method).toBe('POST');
+    req.flush(body);
+  });
+
 
 
 

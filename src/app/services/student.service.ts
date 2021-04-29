@@ -17,4 +17,9 @@ export class StudentService {
     return this.http.get(`https://reqres.in/api/users/${id}`);
   }
 
+  saveUserAssociation(body:any):Observable<any> {
+
+    return this.http.post(`https://reqres.in/api/users`, body);
+  }
+
 }

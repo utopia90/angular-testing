@@ -16,12 +16,24 @@ export class StudentsComponent implements OnInit {
   };
   totalPagado: number = 0;
 
+  newStudent:any[] = [];
+
   constructor(public service: StudentService) { }
 
   ngOnInit(): void {
     this.service.getStudentList().subscribe((response) => {
       console.log('Pedimos los estudiantes');
       this.studentList = response.data;
+    });
+
+    
+    let body = {
+      "name": "morpheus",
+      "job": "leader"
+  }
+    this.service.saveUserAssociation(body).subscribe((response) => {
+      console.log('añadimos estudiante nuevo');
+      this.newStudent = response.data;
     });
   }
 
